@@ -19,6 +19,7 @@ class TravelDataController {
     }
 
     fun getAllTravel() : ArrayList<Travel> {
+        add(Travel("MON PREMIER VOYAGE", "01-01-2001", "MARSEILLE"))
         return travelList
     }
 

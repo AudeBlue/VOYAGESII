@@ -1,7 +1,9 @@
 package com.audeblue.voyagesii
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -11,14 +13,13 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    var liste: ArrayList<Travel> = ArrayList<Travel>()
+    var liste: ArrayList<Travel> = TravelDataController.instance.getAllTravel()
 
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        liste.add(Travel("MON Premier voyage", Date(), "Marseille", R.drawable.abc_ab_share_pack_mtrl_alpha))
         val adapter = MainVoyageAdapter(liste)
 
 
@@ -26,11 +27,11 @@ class MainActivity : AppCompatActivity() {
             main_recycler_view.layoutManager = LinearLayoutManager(this)
 
                     main_recycler_view.adapter = adapter
-
-
-
+fab.setOnClickListener { val intent = Intent(this, TravelCreationActivity::class.java)
+startActivity(intent)}
 
 
 
     }
+
 }
