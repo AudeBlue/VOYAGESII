@@ -1,8 +1,9 @@
 package com.audeblue.voyagesii
 
+import android.graphics.Bitmap
 import java.util.*
 
-data class Travel(var title: String) {
+data class Travel(var title : String, var date: String, var place: String) {
 
     companion object {
         private var nextId = 0
@@ -12,20 +13,9 @@ data class Travel(var title: String) {
         }
     }
 
-    var _id: Int = 0
-    var date: Long = 0
-    var place: String = ""
-    var picture: Int = 0
-
-    constructor(title: String, date: Date, place: String, picture: Int) : this(title) {
-        this._id = getNextId()
-        this.title = title
-        this.date = date.time / 1000
-        this.place = place
-        this.picture = picture
-    }
+    private var id: Int = 0
 
     fun getId(): Int {
-        return this._id
+        return this.id
     }
 }
