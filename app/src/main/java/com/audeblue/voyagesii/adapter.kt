@@ -1,6 +1,7 @@
 package com.audeblue.voyagesii
 
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ class MainVoyageAdapter(private var voyages: List<Travel>) :
 
     override fun onBindViewHolder(holder: VoyageViewHolder, position: Int) {
         holder.bind(voyages.get(position))
+        Log.i("ADAPTER", "I WAS CREATEd")
 
     }
 
@@ -22,7 +24,7 @@ class MainVoyageAdapter(private var voyages: List<Travel>) :
         return VoyageViewHolder(
             LayoutInflater.from(parent.context).inflate(
                 R.layout.main_recycler_view,
-                parent
+                parent, false
             )
         )
     }
@@ -39,7 +41,9 @@ class MainVoyageAdapter(private var voyages: List<Travel>) :
     class VoyageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: Travel) {
+
             itemView.txvTitre.text = item.title
+            Log.i("ADAPTER", item.title)
             itemView.txtDate.text = item.date.toString()
             itemView.txvLieu.text = item.place
         }
